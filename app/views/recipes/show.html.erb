@@ -1,0 +1,37 @@
+<div>
+  <% if @notice %>
+    <h2><%= @notice %></h2>
+  <% end %>
+
+  <div><b>Title:</b> <%= @recipe.title %></div>
+  <div><b>Healthiness:</b> <%= @recipe.healthiness %>%</div>
+  <div><b>Preparation:</b> <%= @recipe.preparation %> mins</div>
+  <div><b>Price:</b> 
+    <% (0..@recipe.price).each do |p| %>
+      $
+    <% end %>
+  </div>
+
+  <p/>
+
+  <h1>Ingredients</h1>  
+  <% @recipe.ingredients.each do |ingredient| %>
+    <li><%= ingredient.description %></li>
+  <% end %>
+
+  <p/>
+
+  <h1>Steps</h1>  
+  <% @recipe.steps.each do |step| %>
+    <li><%= step.description %></li>
+  <% end %>
+
+  <p/>
+
+  <div>
+    <%= link_to 'Delete', "/recipes/#{@recipe.id}", method: :delete %>
+  </div>
+  <div>
+    <%= link_to 'Index', "/recipes", method: :get %>
+  </div>
+</div>

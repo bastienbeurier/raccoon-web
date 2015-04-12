@@ -38,6 +38,7 @@ class RecipesController < ActionController::Base
     @recipe.steps = steps
 
     if ingredients.count > 0 and steps.count > 0 and @recipe.save
+      @notice = 'Recipe created!'
       render action: "show"
     else
       @notice = 'Failed to save recipe... (no ingredient or no step)'
@@ -52,11 +53,18 @@ class RecipesController < ActionController::Base
   end
 
   def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+
+    @notice = 'Recipe deleted!'
+    render action: "index"
   end
 
   def index
+    @recipes = Recipe.all
   end
 
   def show
+    @recipe = Recipe.find(params[:id])
   end
 end
