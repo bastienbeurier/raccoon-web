@@ -11,7 +11,7 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: raccoon_development
+  database: raccoon_dev
   pool: 5
   username: root
   password:

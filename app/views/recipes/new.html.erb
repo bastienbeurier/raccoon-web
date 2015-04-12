@@ -1,0 +1,120 @@
+<%= form_tag("/recipes", method:"post", multipart: true) do %>
+  <% if @notice %>
+    <h2><%= @notice %></h2>
+  <% end %>
+
+  <% if @recipe.errors.any? %>
+    <div>
+      <h2><%= pluralize(@recipe.errors.count, "error") %>:</h2>
+
+      <ul>
+      <% @recipe.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= label_tag "title" %>
+    <%= text_field_tag "title" %>
+  </div>
+  <div>
+    <%= label_tag "Healthiness:" %>
+    <%= select_tag :healthiness, options_for_select(["", ""] + (0..100).map {|i| [i,i] }) %>
+  </div>
+  <div>
+    <%= label_tag "Preparation:" %>
+    <%= radio_button_tag(:preparation, "5") %>
+    <%= label_tag "5 min" %>
+    <%= radio_button_tag(:preparation, "10") %>
+    <%= label_tag "10 min" %>
+    <%= radio_button_tag(:preparation, "15") %>
+    <%= label_tag "15 min" %>
+    <%= radio_button_tag(:preparation, "20") %>
+    <%= label_tag "20 min" %>
+    <%= radio_button_tag(:preparation, "25") %>
+    <%= label_tag "25 min" %>
+    <%= radio_button_tag(:preparation, "30") %>
+    <%= label_tag "30 min" %>
+  </div>
+  <div>
+    <%= label_tag "Price:" %>
+    <%= radio_button_tag(:price, "0") %>
+    <%= label_tag "$" %>
+    <%= radio_button_tag(:price, "1") %>
+    <%= label_tag "$$" %>
+    <%= radio_button_tag(:price, "2") %>
+    <%= label_tag "$$$" %>
+  </div>
+  <div>
+    <%= label_tag "Image:" %>
+    <%= file_field_tag "image" %>
+  </div>
+
+  <p/>  
+
+  <div>
+    <%= label_tag "Ingredients:" %>
+  </div>
+  <div>
+    <%= text_field_tag 'ingredient_1', nil, placeholder: 'Ingredient 1', size: 30, maxlength: 30 %>
+  </div>
+  <div>
+    <%= text_field_tag 'ingredient_2', nil, placeholder: 'Ingredient 2', size: 30, maxlength: 30 %>
+  </div>
+  <div>
+    <%= text_field_tag 'ingredient_3', nil, placeholder: 'Ingredient 3', size: 30, maxlength: 30 %>
+  </div>
+  <div>
+    <%= text_field_tag 'ingredient_4', nil, placeholder: 'Ingredient 4', size: 30, maxlength: 30 %>
+  </div>
+  <div>
+    <%= text_field_tag 'ingredient_5', nil, placeholder: 'Ingredient 5', size: 30, maxlength: 30 %>
+  </div>
+  <div>
+    <%= text_field_tag 'ingredient_6', nil, placeholder: 'Ingredient 6', size: 30, maxlength: 30 %>
+  </div>
+  <div>
+    <%= text_field_tag 'ingredient_7', nil, placeholder: 'Ingredient 7', size: 30, maxlength: 30 %>
+  </div>
+  <div>
+    <%= text_field_tag 'ingredient_8', nil, placeholder: 'Ingredient 8', size: 30, maxlength: 30 %>
+  </div>
+  <div>
+    <%= text_field_tag 'ingredient_9', nil, placeholder: 'Ingredient 9', size: 30, maxlength: 30 %>
+  </div>
+  <div>
+    <%= text_field_tag 'ingredient_10', nil, placeholder: 'Ingredient 10', size: 30, maxlength: 30 %>
+  </div>
+
+  <p/> 
+
+  <div>
+    <%= label_tag "Steps:" %>
+  </div>
+  <div>
+    <%= text_area_tag 'step_1', nil, placeholder: 'Step 1', size: "60x3" %>
+  </div>
+  <div>
+    <%= text_area_tag 'step_2', nil, placeholder: 'Step 2', size: "60x3" %>
+  </div>
+  <div>
+    <%= text_area_tag 'step_3', nil, placeholder: 'Step 3', size: "60x3" %>
+  </div>
+  <div>
+    <%= text_area_tag 'step_4', nil, placeholder: 'Step 4', size: "60x3" %>
+  </div>
+  <div>
+    <%= text_area_tag 'step_5', nil, placeholder: 'Step 5', size: "60x3" %>
+  </div>
+  <div>
+    <%= text_area_tag 'step_6', nil, placeholder: 'Step 6', size: "60x3" %>
+  </div>
+
+  <p/>  
+
+  <div>
+    <%= submit_tag("Create") %>
+  </div>
+<% end %>
