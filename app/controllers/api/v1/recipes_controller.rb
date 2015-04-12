@@ -12,6 +12,6 @@ class Api::V1::RecipesController < Api::V1::ApiController
       recipes = Recipe.order(created_at: :desc).limit(count).offset(offset)
     end
 
-    render json: {result: {recipes: recipes.as_json(:include => [:ingredients, :steps])}}, status: 201
+    render json: {result: {recipes: Recipe.response(recipes)}}, status: 201
   end
 end
