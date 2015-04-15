@@ -15,7 +15,7 @@ class Recipe < ActiveRecord::Base
     end
   end
 
-  has_attached_file :image, path: ":style/:file_name", :default_url => ":style/missing.png"
+  has_attached_file :image, styles: { small: '640x320#' }, path: ":style/:file_name", :default_url => ":style/missing.png"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   def response
@@ -24,7 +24,7 @@ class Recipe < ActiveRecord::Base
       healthiness: self.healthiness,
       preparation: self.preparation,
       price: self.price,
-      image_url: self.image.url(:original),
+      image_url: self.image.url(:small),
       ingredients: self.ingredients,
       steps: self.steps }
   end
