@@ -3,16 +3,9 @@ class Recipe < ActiveRecord::Base
   has_many :steps, dependent: :destroy
 
   validates :title, presence: true
-  validates :healthiness, presence: true
-  validates :preparation, presence: true
-  validates :price, presence: true
 
   Paperclip.interpolates :file_name do |attachment, style|
-    if attachment.instance.class.to_s == "Recipe"
-      "image_" + attachment.instance.id.to_s
-    else 
-      "profile_" + attachment.instance.id.to_s
-    end
+    "image_" + attachment.instance.id.to_s
   end
 
   has_attached_file :image, styles: { small: '640x320#' }, path: ":style/:file_name", :default_url => ":style/missing.png"
@@ -21,9 +14,6 @@ class Recipe < ActiveRecord::Base
   def response
     { id: self.id,
       title: self.title,
-      healthiness: self.healthiness,
-      preparation: self.preparation,
-      price: self.price,
       image_url: self.image.url(:small),
       ingredients: self.ingredients,
       steps: self.steps }

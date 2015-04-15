@@ -20,34 +20,6 @@
     <%= text_field_tag "title" %>
   </div>
   <div>
-    <%= label_tag "Healthiness:" %>
-    <%= select_tag :healthiness, options_for_select(["", ""] + (0..100).map {|i| [i,i] }) %>
-  </div>
-  <div>
-    <%= label_tag "Preparation:" %>
-    <%= radio_button_tag(:preparation, "5") %>
-    <%= label_tag "5 min" %>
-    <%= radio_button_tag(:preparation, "10") %>
-    <%= label_tag "10 min" %>
-    <%= radio_button_tag(:preparation, "15") %>
-    <%= label_tag "15 min" %>
-    <%= radio_button_tag(:preparation, "20") %>
-    <%= label_tag "20 min" %>
-    <%= radio_button_tag(:preparation, "25") %>
-    <%= label_tag "25 min" %>
-    <%= radio_button_tag(:preparation, "30") %>
-    <%= label_tag "30 min" %>
-  </div>
-  <div>
-    <%= label_tag "Price:" %>
-    <%= radio_button_tag(:price, "0") %>
-    <%= label_tag "$" %>
-    <%= radio_button_tag(:price, "1") %>
-    <%= label_tag "$$" %>
-    <%= radio_button_tag(:price, "2") %>
-    <%= label_tag "$$$" %>
-  </div>
-  <div>
     <%= label_tag "Image:" %>
     <%= file_field_tag "image" %>
   </div>

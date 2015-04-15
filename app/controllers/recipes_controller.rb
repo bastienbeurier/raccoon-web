@@ -7,9 +7,6 @@ class RecipesController < ActionController::Base
     #Create recipe.
     @recipe = Recipe.new
     @recipe.title = params[:title]
-    @recipe.healthiness = params[:healthiness]
-    @recipe.preparation = params[:preparation]
-    @recipe.price = params[:price]
     @recipe.image = params[:image]
 
     #Create ingredients.
